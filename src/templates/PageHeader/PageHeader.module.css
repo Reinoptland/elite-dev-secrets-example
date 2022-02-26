@@ -1,0 +1,13 @@
+.pageheader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pageheader__right {
+  display: flex;
+  align-items: center;
+}
+
+.pageheader__right > * {
+  margin: 0 0.5em;
+}

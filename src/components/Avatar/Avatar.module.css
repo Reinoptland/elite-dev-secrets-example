@@ -1,0 +1,10 @@
+.avatar {
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 50%;
+  display: flex;
+  width: 48px;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+}

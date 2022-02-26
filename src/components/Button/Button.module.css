@@ -1,0 +1,14 @@
+.btn {
+  padding: 0.5em 2em;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 0.25em;
+}
+
+.btn > svg {
+  margin-right: 0.5em;
+}
