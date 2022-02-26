@@ -1,0 +1,19 @@
+.post__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.post__header__right {
+  display: flex;
+  align-items: center;
+}
+
+.post__header__left {
+  display: flex;
+  align-items: center;
+}
+
+.post__header__left > * {
+  margin: 0 1em 0 0;
+}

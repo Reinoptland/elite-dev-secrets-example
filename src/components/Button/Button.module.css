@@ -7,8 +7,17 @@
   color: white;
   border: none;
   border-radius: 0.25em;
+  margin: 0 0.5em;
 }
 
 .btn > svg {
   margin-right: 0.5em;
+}
+
+.btn:first-child {
+  margin-left: 0;
+}
+
+.btn:last-child {
+  margin-right: 0;
 }

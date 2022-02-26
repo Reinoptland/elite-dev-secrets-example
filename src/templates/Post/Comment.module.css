@@ -1,0 +1,16 @@
+.comment {
+  margin-bottom: 1em;
+}
+
+.comment:last-of-type {
+  margin-bottom: 0;
+}
+
+.commentCard {
+  width: 360px;
+  padding: 1em;
+}
+
+.commentCard p:first-child {
+  margin-bottom: 1em;
+}

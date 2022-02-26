@@ -1,0 +1,12 @@
+.post__stat {
+  display: flex;
+  align-items: center;
+}
+
+.post__stat > * {
+  margin: 0 1em 0 0;
+}
+
+.post__stats {
+  display: flex;
+}

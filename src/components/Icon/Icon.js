@@ -1,9 +1,9 @@
 import { IconContext } from "react-icons";
 
-export default function Icon(props) {
+export default function Icon({ children, color = "white", size = 16 }) {
   return (
-    <IconContext.Provider value={{ color: "white" }}>
-      {props.children}
+    <IconContext.Provider value={{ color: color, size: size }}>
+      {children}
     </IconContext.Provider>
   );
 }
