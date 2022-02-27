@@ -13,7 +13,7 @@ import LoggedOutContent from "../../components/LoggedOutContent";
 import Columns from "../../components/Columns";
 import CommentSection from "./CommentSection";
 
-export default function Post({ user, post, likePost, unLikePost }) {
+export default function Post({ user, post, likePost, unLikePost, addComment }) {
   const [showComments, setShowComments] = useState(false);
   return (
     <Card as="article" className={styles.post}>
@@ -61,6 +61,7 @@ export default function Post({ user, post, likePost, unLikePost }) {
             user={user}
             comments={post.comments}
             setShowComments={setShowComments}
+            addComment={addComment}
           />
         )}
       </LoggedInContent>

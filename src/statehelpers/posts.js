@@ -1,3 +1,5 @@
+let nextCommentId = 3;
+
 export function createPost(postInput, user) {
   return (posts) => {
     return [
@@ -29,6 +31,24 @@ export function removeLikeFromPost(postId, userId) {
     posts.map((post) => {
       if (post.id === postId) {
         return { ...post, likes: post.likes.filter((id) => id !== userId) };
+      }
+      return post;
+    });
+}
+
+export function addCommentToPost(commentData, postId, user) {
+  return (posts) =>
+    posts.map((post) => {
+      if (post.id === postId && post.commentsEnabled) {
+        const commentId = nextCommentId;
+        nextCommentId++;
+        return {
+          ...post,
+          comments: [
+            { body: commentData, user, id: commentId },
+            ...post.comments,
+          ],
+        };
       }
       return post;
     });

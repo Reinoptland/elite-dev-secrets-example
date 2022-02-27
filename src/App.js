@@ -8,6 +8,7 @@ import {
   createPost,
   addLikeToPost,
   removeLikeFromPost,
+  addCommentToPost,
 } from "./statehelpers/posts";
 import LoginForm from "./templates/LoginForm";
 import PageHeader from "./templates/PageHeader";
@@ -64,6 +65,8 @@ function App() {
   const likePost = (postId) => () => setPosts(addLikeToPost(postId, user.id));
   const unLikePost = (postId) => () =>
     setPosts(removeLikeFromPost(postId, user.id));
+  const addComment = (postId) => (commentInput) =>
+    setPosts(addCommentToPost(commentInput, postId, user));
 
   return (
     <>
@@ -77,6 +80,7 @@ function App() {
               user={user}
               likePost={likePost(post.id)}
               unLikePost={unLikePost(post.id)}
+              addComment={addComment(post.id)}
             />
           ))}
         </section>
