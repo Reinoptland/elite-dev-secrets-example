@@ -13,7 +13,7 @@ import LoggedOutContent from "../../components/LoggedOutContent";
 import Columns from "../../components/Columns";
 import CommentSection from "./CommentSection";
 
-export default function Post({ user, post }) {
+export default function Post({ user, post, likePost, unLikePost }) {
   const [showComments, setShowComments] = useState(false);
   return (
     <Card as="article" className={styles.post}>
@@ -24,14 +24,14 @@ export default function Post({ user, post }) {
       <LoggedInContent user={user}>
         <Columns>
           {post.likes.includes(user?.id) ? (
-            <Button>
+            <Button onClick={unLikePost}>
               <Icon>
                 <RiHeart3Fill />
               </Icon>
               Like
             </Button>
           ) : (
-            <Button>
+            <Button onClick={likePost}>
               <Icon>
                 <RiHeart3Line />
               </Icon>

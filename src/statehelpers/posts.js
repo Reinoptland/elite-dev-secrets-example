@@ -13,3 +13,23 @@ export function createPost(postInput, user) {
     ];
   };
 }
+
+export function addLikeToPost(postId, userId) {
+  return (posts) =>
+    posts.map((post) => {
+      if (post.id === postId) {
+        return { ...post, likes: [...post.likes, userId] };
+      }
+      return post;
+    });
+}
+
+export function removeLikeFromPost(postId, userId) {
+  return (posts) =>
+    posts.map((post) => {
+      if (post.id === postId) {
+        return { ...post, likes: post.likes.filter((id) => id !== userId) };
+      }
+      return post;
+    });
+}

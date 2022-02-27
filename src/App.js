@@ -4,7 +4,11 @@ import Columns from "./components/Columns";
 import LoggedInContent from "./components/LoggedInContent";
 import LoggedOutContent from "./components/LoggedOutContent";
 import { findOrCreateUser } from "./statehelpers/users";
-import { createPost } from "./statehelpers/posts";
+import {
+  createPost,
+  addLikeToPost,
+  removeLikeFromPost,
+} from "./statehelpers/posts";
 import LoginForm from "./templates/LoginForm";
 import PageHeader from "./templates/PageHeader";
 import Post from "./templates/Post";
@@ -17,7 +21,7 @@ const dummyPosts = [
     user: { id: 2, name: "Mauro Nieuwenhuisen", hexColor: "#e83b2e" },
     title: "Developer meetups in Gouda",
     createdAt: new Date() - 200000000,
-    likes: [3, 4, 7],
+    likes: [4, 7],
     category: "Meetups",
     comments: null,
     commentsEnabled: false,
@@ -57,6 +61,9 @@ function App() {
   const login = (userName) => setUser(findOrCreateUser(userName));
   const logout = () => setUser(null);
   const addPost = (postInput) => setPosts(createPost(postInput, user));
+  const likePost = (postId) => () => setPosts(addLikeToPost(postId, user.id));
+  const unLikePost = (postId) => () =>
+    setPosts(removeLikeFromPost(postId, user.id));
 
   return (
     <>
@@ -64,7 +71,13 @@ function App() {
       <Columns justifyContent="center" alignItems="flex-start">
         <section className={styles.feed}>
           {posts.sort(sortByCreatedAtASC).map((post) => (
-            <Post key={post.id} post={post} user={user} />
+            <Post
+              key={post.id}
+              post={post}
+              user={user}
+              likePost={likePost(post.id)}
+              unLikePost={unLikePost(post.id)}
+            />
           ))}
         </section>
         <LoggedOutContent user={user}>
