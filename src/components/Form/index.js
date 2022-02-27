@@ -1,7 +1,3 @@
-import Input from "./Input";
-
-const Form = {
-  Input,
-};
-
-export default Form;
+export { Input } from "./Input";
+export { Label } from "./Label";
+export { default } from "./Form";

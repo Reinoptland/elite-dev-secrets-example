@@ -1,4 +1,14 @@
 .card {
-  border: 2px solid lightgray;
   padding: 2em;
+  border: 2px solid;
+}
+
+.white {
+  border-color: var(--color-light-grey);
+  background-color: var(--color-white);
+}
+
+.primary {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
 }

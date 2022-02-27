@@ -3,7 +3,7 @@ import { RiChat2Line, RiCloseFill } from "react-icons/ri";
 import Avatar from "../../components/Avatar";
 import Button from "../../components/Button";
 import Columns from "../../components/Columns";
-import Input from "../../components/Form/Input";
+import { Input } from "../../components/Form";
 import Icon from "../../components/Icon";
 import Comment from "./Comment";
 import styles from "./CommentSection.module.css";
@@ -15,7 +15,7 @@ export default function CommentSection({ user, comments, setShowComments }) {
         <Avatar user={user} />
         <div className={styles.inputSection}>
           <Input placeholder="Add your comment here" />
-          <Columns>
+          <Columns justifyContent="space-between">
             <Button>
               <Icon>
                 <RiChat2Line />

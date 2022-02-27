@@ -1,5 +1,9 @@
 import styles from "./App.module.css";
 import Columns from "./components/Columns";
+import Form from "./components/Form";
+import LoggedInContent from "./components/LoggedInContent";
+import LoggedOutContent from "./components/LoggedOutContent";
+import LoginForm from "./templates/LoginForm";
 import PageHeader from "./templates/PageHeader";
 import Post from "./templates/Post";
 import { sortByCreatedAtASC } from "./viewhelpers/time";
@@ -40,18 +44,23 @@ const dummyPosts = [
   },
 ];
 
-const user = { id: 1, name: "Harm de Kluiver", hexColor: "#f1c232" };
+// const user = { id: 1, name: "Harm de Kluiver", hexColor: "#f1c232" };
+const user = null;
 
 function App() {
   return (
     <div>
       <PageHeader user={user} />
-      <Columns>
+      <Columns justifyContent="center" alignItems="flex-start">
         <section className={styles.feed}>
           {dummyPosts.sort(sortByCreatedAtASC).map((post) => (
             <Post key={post.id} post={post} user={user} />
           ))}
         </section>
+        <LoggedOutContent user={user}>
+          <LoginForm />
+        </LoggedOutContent>
+        <LoggedInContent user={user}></LoggedInContent>
       </Columns>
     </div>
   );

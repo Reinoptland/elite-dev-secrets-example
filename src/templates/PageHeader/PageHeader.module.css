@@ -1,7 +1,12 @@
 .pageheader {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 3em;
+  padding-top: 1em;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+  position: sticky;
+  top: 0;
+  background-color: var(--color-white);
 }
 
 .pageheader__right {

@@ -21,3 +21,10 @@
 .btn:last-child {
   margin-right: 0;
 }
+
+.fullwidth {
+  margin-right: 0;
+  margin-left: 0;
+  width: 100%;
+  justify-content: center;
+}
