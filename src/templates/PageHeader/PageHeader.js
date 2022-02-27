@@ -8,7 +8,7 @@ import styles from "./PageHeader.module.css";
 import LoggedInContent from "../../components/LoggedInContent";
 import LoggedOutContent from "../../components/LoggedOutContent";
 
-export default function PageHeader({ user }) {
+export default function PageHeader({ user, logout }) {
   return (
     <header className={styles.pageheader}>
       <TypoGraphy.Heading>🤫 Elite Developer Secrets</TypoGraphy.Heading>
@@ -16,7 +16,7 @@ export default function PageHeader({ user }) {
         <LoggedInContent user={user}>
           <UserName user={user} />
           <Avatar user={user} />
-          <Button>
+          <Button onClick={logout}>
             <Icon color={"white"}>
               <RiLogoutBoxLine />
             </Icon>
