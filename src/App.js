@@ -4,6 +4,7 @@ import Columns from "./components/Columns";
 import LoggedInContent from "./components/LoggedInContent";
 import LoggedOutContent from "./components/LoggedOutContent";
 import { findOrCreateUser } from "./statehelpers/users";
+import { createPost } from "./statehelpers/posts";
 import LoginForm from "./templates/LoginForm";
 import PageHeader from "./templates/PageHeader";
 import Post from "./templates/Post";
@@ -47,15 +48,22 @@ const dummyPosts = [
 ];
 
 function App() {
-  const [user, setUser] = useState(null);
+  const [posts, setPosts] = useState(dummyPosts);
+  const [user, setUser] = useState({
+    id: 3,
+    name: "Rein Op 't Land",
+    hexColor: "#3ca11d",
+  });
   const login = (userName) => setUser(findOrCreateUser(userName));
   const logout = () => setUser(null);
+  const addPost = (postInput) => setPosts(createPost(postInput, user));
+
   return (
     <>
       <PageHeader user={user} logout={logout} />
       <Columns justifyContent="center" alignItems="flex-start">
         <section className={styles.feed}>
-          {dummyPosts.sort(sortByCreatedAtASC).map((post) => (
+          {posts.sort(sortByCreatedAtASC).map((post) => (
             <Post key={post.id} post={post} user={user} />
           ))}
         </section>
@@ -63,7 +71,7 @@ function App() {
           <LoginForm login={login} />
         </LoggedOutContent>
         <LoggedInContent user={user}>
-          <PostForm />
+          <PostForm addPost={addPost} />
         </LoggedInContent>
       </Columns>
     </>
