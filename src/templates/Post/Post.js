@@ -1,5 +1,5 @@
 import PostStats from "./PostStats";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Card from "../../components/Card";
 import TypoGraphy from "../../components/TypoGraphy";
@@ -15,6 +15,11 @@ import CommentSection from "./CommentSection";
 
 export default function Post({ user, post, likePost, unLikePost, addComment }) {
   const [showComments, setShowComments] = useState(false);
+
+  useEffect(() => {
+    if (!user) setShowComments(false);
+  }, [user]);
+
   return (
     <Card as="article" className={styles.post}>
       <PostHeader post={post} />

@@ -11,6 +11,7 @@ export default function LoginForm({ login }) {
   const [userName, setUserName] = useState("");
   const onSubmit = (e) => {
     e.preventDefault();
+    if (!userName) return;
     login(userName);
   };
   return (
