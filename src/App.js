@@ -6,6 +6,7 @@ import LoggedOutContent from "./components/LoggedOutContent";
 import LoginForm from "./templates/LoginForm";
 import PageHeader from "./templates/PageHeader";
 import Post from "./templates/Post";
+import PostForm from "./templates/PostForm";
 import { sortByCreatedAtASC } from "./viewhelpers/time";
 
 const dummyPosts = [
@@ -44,12 +45,12 @@ const dummyPosts = [
   },
 ];
 
-// const user = { id: 1, name: "Harm de Kluiver", hexColor: "#f1c232" };
-const user = null;
+const user = { id: 1, name: "Harm de Kluiver", hexColor: "#f1c232" };
+// const user = null;
 
 function App() {
   return (
-    <div>
+    <>
       <PageHeader user={user} />
       <Columns justifyContent="center" alignItems="flex-start">
         <section className={styles.feed}>
@@ -60,9 +61,11 @@ function App() {
         <LoggedOutContent user={user}>
           <LoginForm />
         </LoggedOutContent>
-        <LoggedInContent user={user}></LoggedInContent>
+        <LoggedInContent user={user}>
+          <PostForm />
+        </LoggedInContent>
       </Columns>
-    </div>
+    </>
   );
 }
 

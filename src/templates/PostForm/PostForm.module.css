@@ -1,0 +1,7 @@
+.postForm {
+  max-width: 500px;
+  width: 100%;
+  margin-left: 3em;
+  position: sticky;
+  top: 6em;
+}
