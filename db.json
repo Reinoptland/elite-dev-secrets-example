@@ -1,0 +1,48 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "userId": 2,
+      "title": "Developer meetups in Gouda",
+      "createdAt": 1646191204844,
+      "category": "Meetups",
+      "commentsEnabled": false,
+      "body": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis modi odio, obcaecati at sit non sint qui accusamus deleniti corrupti dolorem facilis, ex sequi. Reiciendis, dolorem! Iste commodi veniam maxime."
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "title": "You should always style things",
+      "createdAt": 1646390604844,
+      "category": "CSS",
+      "commentsEnabled": true,
+      "body": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis modi odio, obcaecati at sit non sint qui accusamus deleniti corrupti dolorem facilis, ex sequi. Reiciendis, dolorem! Iste commodi veniam maxime."
+    }
+  ],
+  "users": [
+    { "id": 1, "name": "Harm de Kluiver", "hexColor": "#f1c232" },
+    { "id": 2, "name": "Mauro Nieuwenhuisen", "hexColor": "#e83b2e" },
+    { "id": 3, "name": "Rein Op 't Land", "hexColor": "#3ca11d" }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "Yeah for real! 💯🧑‍🎨 \\n Making things pretty is super satisfying",
+      "userId": 3,
+      "postId": 2
+    },
+    {
+      "id": 2,
+      "body": "Yeah - but what do you use in React? \\n CSS, CSS-modules or CSS-in-JS?",
+      "userId": 2,
+      "postId": 2
+    }
+  ],
+  "likes": [
+    { "id": 1, "userId": 1, "postId": 1 },
+    { "id": 2, "userId": 2, "postId": 1 },
+    { "id": 3, "userId": 3, "postId": 1 },
+    { "id": 4, "userId": 1, "postId": 2 },
+    { "id": 5, "userId": 2, "postId": 2 }
+  ]
+}
