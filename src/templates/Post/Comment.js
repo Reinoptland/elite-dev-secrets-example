@@ -5,17 +5,19 @@ import Columns from "../../components/Columns";
 import TypoGraphy from "../../components/TypoGraphy";
 import styles from "./Comment.module.css";
 
+const BASE_URL = process.env.REACT_APP_API_URL;
+
 export default function Comment({ comment: { userId, body } }) {
   const [user, setUser] = useState(null);
   useEffect(() => {
     async function getUser() {
-      const response = await fetch(`http://localhost:4000/users/${userId}`);
+      const response = await fetch(`${BASE_URL}/users/${userId}`);
       const data = await response.json();
       setUser(data);
     }
 
     getUser();
-  }, []);
+  }, [userId]);
   return (
     user && (
       <Columns justifyContent="space-between" className={styles.comment}>

@@ -1,3 +1,5 @@
+const BASE_URL = process.env.REACT_APP_API_URL;
+
 export async function createNewPostOnServer(postInput, userId) {
   try {
     // 1. post aanmaken voor de server
@@ -8,7 +10,7 @@ export async function createNewPostOnServer(postInput, userId) {
     };
 
     // 2. POST request maken naar /posts
-    const response = await fetch(`http://localhost:4000/posts`, {
+    const response = await fetch(`${BASE_URL}/posts`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +30,7 @@ export async function createNewPostOnServer(postInput, userId) {
 export async function fetchPosts() {
   try {
     const response = await fetch(
-      "http://localhost:4000/posts?_expand=user&_embed=comments&_embed=likes"
+      `${BASE_URL}/posts?_expand=user&_embed=comments&_embed=likes`
     );
     const data = await response.json();
     return [null, data];
