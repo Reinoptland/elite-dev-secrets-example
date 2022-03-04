@@ -24,3 +24,15 @@ export async function createNewPostOnServer(postInput, userId) {
     return [error, null];
   }
 }
+
+export async function fetchPosts() {
+  try {
+    const response = await fetch(
+      "http://localhost:4000/posts?_expand=user&_embed=comments&_embed=likes"
+    );
+    const data = await response.json();
+    return [null, data];
+  } catch (error) {
+    return [error, null];
+  }
+}

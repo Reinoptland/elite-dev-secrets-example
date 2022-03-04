@@ -14,24 +14,21 @@ import PageHeader from "./templates/PageHeader";
 import Post from "./templates/Post";
 import PostForm from "./templates/PostForm";
 import { sortByCreatedAtASC } from "./viewhelpers/time";
+import { fetchPosts } from "./api/posts";
 
 function App() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    async function fetchPosts() {
-      try {
-        const response = await fetch(
-          "http://localhost:4000/posts?_expand=user&_embed=comments&_embed=likes"
-        );
-        const data = await response.json();
+    async function getData() {
+      const [error, data] = await fetchPosts();
+      if (data) {
         setPosts(data);
-      } catch (error) {
-        // @todo handle things here
+      } else if (error) {
+        // handle error here
       }
     }
-
-    fetchPosts();
+    getData();
   }, []);
 
   const [user, setUser] = useState(null);
