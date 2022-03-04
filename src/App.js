@@ -37,8 +37,29 @@ function App() {
   const likePost = (postId) => () => setPosts(addLikeToPost(postId, user.id));
   const unLikePost = (postId) => () =>
     setPosts(removeLikeFromPost(postId, user.id));
-  const addComment = (postId) => (commentInput) =>
-    setPosts(addCommentToPost(commentInput, postId, user));
+  const addComment = (postId) => (commentInput) => {
+    // todo: server side updaten
+    async function postComment(postId, commentInput, userId) {
+      const newComment = {
+        postId,
+        userId,
+        body: commentInput,
+      };
+
+      const response = await fetch(`http://localhost:4000/posts`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newComment),
+      });
+
+      const data = await response.json();
+      setPosts(addCommentToPost(data));
+    }
+    postComment(postId, commentInput, user.id);
+    // client side update
+  };
 
   return (
     <>

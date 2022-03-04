@@ -53,6 +53,42 @@
       "createdAt": 1646399872799,
       "userId": 3,
       "id": 6
+    },
+    {
+      "postId": 5,
+      "userId": 3,
+      "body": "Bla",
+      "id": 7
+    },
+    {
+      "postId": 5,
+      "userId": 3,
+      "body": "Bla",
+      "id": 8
+    },
+    {
+      "postId": 5,
+      "userId": 3,
+      "body": "Hallo",
+      "id": 9
+    },
+    {
+      "postId": 5,
+      "userId": 3,
+      "body": "Bla",
+      "id": 10
+    },
+    {
+      "postId": 5,
+      "userId": 3,
+      "body": "Bla",
+      "id": 11
+    },
+    {
+      "postId": 5,
+      "userId": 2,
+      "body": "HI!",
+      "id": 12
     }
   ],
   "users": [

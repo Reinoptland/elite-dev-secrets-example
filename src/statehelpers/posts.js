@@ -72,18 +72,13 @@ export function removeLikeFromPost(postId, userId) {
     });
 }
 
-export function addCommentToPost(commentData, postId, user) {
+export function addCommentToPost(comment) {
   return (posts) =>
     posts.map((post) => {
-      if (post.id === postId && post.commentsEnabled) {
-        const commentId = nextCommentId;
-        nextCommentId++;
+      if (post.id === comment.postId && post.commentsEnabled) {
         return {
           ...post,
-          comments: [
-            { body: commentData, user, id: commentId },
-            ...post.comments,
-          ],
+          comments: [comment, ...post.comments],
         };
       }
       return post;
