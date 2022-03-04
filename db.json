@@ -35,6 +35,24 @@
       "createdAt": 1646398606933,
       "userId": 3,
       "id": 4
+    },
+    {
+      "title": "Cache rules everything around me",
+      "category": "JS",
+      "commentsEnabled": true,
+      "body": "C.R.E.A.M.",
+      "createdAt": 1646399177266,
+      "userId": 3,
+      "id": 5
+    },
+    {
+      "title": "bla",
+      "category": "JS",
+      "commentsEnabled": false,
+      "body": "balal;a",
+      "createdAt": 1646399872799,
+      "userId": 3,
+      "id": 6
     }
   ],
   "users": [

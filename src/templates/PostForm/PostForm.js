@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { RiSendPlaneFill } from "react-icons/ri";
+import { createNewPostOnServer } from "../../api/posts";
 import Button from "../../components/Button";
 import Card from "../../components/Card";
 import Form, {
@@ -11,6 +12,7 @@ import Form, {
 } from "../../components/Form";
 import Icon from "../../components/Icon";
 import TypoGraphy from "../../components/TypoGraphy";
+import { createPost } from "../../statehelpers/posts";
 import styles from "./PostForm.module.css";
 
 const initialState = {
@@ -20,8 +22,9 @@ const initialState = {
   body: "",
 };
 
-export default function PostForm({ addPost }) {
+export default function PostForm({ user, setPosts }) {
   const [formData, setFormData] = useState(initialState);
+  const [formError, setFormError] = useState(null);
 
   const updateInput = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -29,10 +32,24 @@ export default function PostForm({ addPost }) {
   const toggleComments = (e) =>
     setFormData({ ...formData, commentsEnabled: !e.target.checked });
 
+  const addPost = async (postInput) => {
+    // 1. server state updaten
+    const [error, data] = await createNewPostOnServer(postInput, user.id);
+    if (data) {
+      // 2. client state updaten
+      setPosts(createPost(data, user));
+      resetForm();
+      setFormError(null);
+      // reset form
+    } else if (error) {
+      // display something helpful to the user here
+      setFormError("Something went wrong");
+    }
+  };
+
   const onSubmit = (e) => {
-    e.preventDefault();
     addPost(formData);
-    resetForm();
+    e.preventDefault();
   };
 
   const resetForm = () => setFormData({ ...initialState });
@@ -67,6 +84,7 @@ export default function PostForm({ addPost }) {
             Post!
           </Icon>
         </Button>
+        <TypoGraphy.Heading>{formError}</TypoGraphy.Heading>
       </Form>
     </Card>
   );

@@ -5,11 +5,9 @@ import LoggedInContent from "./components/LoggedInContent";
 import LoggedOutContent from "./components/LoggedOutContent";
 import { findOrCreateUser } from "./statehelpers/users";
 import {
-  createPost,
   addLikeToPost,
   removeLikeFromPost,
   addCommentToPost,
-  loadDummyPosts,
 } from "./statehelpers/posts";
 import LoginForm from "./templates/LoginForm";
 import PageHeader from "./templates/PageHeader";
@@ -39,33 +37,6 @@ function App() {
   const [user, setUser] = useState(null);
   const login = (userName) => setUser(findOrCreateUser(userName));
   const logout = () => setUser(null);
-  const addPost = (postInput) => {
-    // 1. post aanmaken voor de server
-    async function createNewPostOnServer() {
-      const newPost = {
-        ...postInput,
-        createdAt: Date.now(),
-        userId: user.id,
-      };
-
-      // 2. POST request maken naar /posts
-      const response = await fetch(`http://localhost:4000/posts`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newPost),
-      });
-
-      const data = await response.json();
-      // 3. response checken (is het gelukt)
-
-      // 4. client state updaten
-      setPosts(createPost(data, user));
-    }
-
-    createNewPostOnServer();
-  };
   const likePost = (postId) => () => setPosts(addLikeToPost(postId, user.id));
   const unLikePost = (postId) => () =>
     setPosts(removeLikeFromPost(postId, user.id));
@@ -92,7 +63,7 @@ function App() {
           <LoginForm login={login} />
         </LoggedOutContent>
         <LoggedInContent user={user}>
-          <PostForm addPost={addPost} />
+          <PostForm setPosts={setPosts} user={user} />
         </LoggedInContent>
       </Columns>
     </>
