@@ -38,17 +38,15 @@ export function loadDummyPosts() {
   ];
 }
 
-export function createPost(postInput, user) {
+export function createPost(postData, user) {
   return (posts) => {
     return [
       ...posts,
       {
-        ...postInput,
+        ...postData,
         user,
-        id: posts.length + 1,
-        comments: postInput.commentsEnabled ? [] : null,
+        comments: [],
         likes: [],
-        createdAt: new Date(),
       },
     ];
   };

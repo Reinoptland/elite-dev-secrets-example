@@ -17,12 +17,42 @@
       "category": "CSS",
       "commentsEnabled": true,
       "body": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis modi odio, obcaecati at sit non sint qui accusamus deleniti corrupti dolorem facilis, ex sequi. Reiciendis, dolorem! Iste commodi veniam maxime."
+    },
+    {
+      "title": "Use const and let",
+      "category": "JS",
+      "commentsEnabled": true,
+      "body": "Really tho",
+      "createdAt": 1646398415025,
+      "userId": 3,
+      "id": 3
+    },
+    {
+      "title": "useEffect is cool",
+      "category": "JS",
+      "commentsEnabled": true,
+      "body": "Fire for effect",
+      "createdAt": 1646398606933,
+      "userId": 3,
+      "id": 4
     }
   ],
   "users": [
-    { "id": 1, "name": "Harm de Kluiver", "hexColor": "#f1c232" },
-    { "id": 2, "name": "Mauro Nieuwenhuisen", "hexColor": "#e83b2e" },
-    { "id": 3, "name": "Rein Op 't Land", "hexColor": "#3ca11d" }
+    {
+      "id": 1,
+      "name": "Harm de Kluiver",
+      "hexColor": "#f1c232"
+    },
+    {
+      "id": 2,
+      "name": "Mauro Nieuwenhuisen",
+      "hexColor": "#e83b2e"
+    },
+    {
+      "id": 3,
+      "name": "Rein Op 't Land",
+      "hexColor": "#3ca11d"
+    }
   ],
   "comments": [
     {
@@ -39,10 +69,30 @@
     }
   ],
   "likes": [
-    { "id": 1, "userId": 1, "postId": 1 },
-    { "id": 2, "userId": 2, "postId": 1 },
-    { "id": 3, "userId": 3, "postId": 1 },
-    { "id": 4, "userId": 1, "postId": 2 },
-    { "id": 5, "userId": 2, "postId": 2 }
+    {
+      "id": 1,
+      "userId": 1,
+      "postId": 1
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "postId": 1
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "postId": 1
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "postId": 2
+    },
+    {
+      "id": 5,
+      "userId": 2,
+      "postId": 2
+    }
   ]
 }
