@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./App.module.css";
 import Columns from "./components/Columns";
 import LoggedInContent from "./components/LoggedInContent";
@@ -18,7 +18,25 @@ import PostForm from "./templates/PostForm";
 import { sortByCreatedAtASC } from "./viewhelpers/time";
 
 function App() {
-  const [posts, setPosts] = useState(loadDummyPosts);
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    async function fetchPosts() {
+      try {
+        const response = await fetch(
+          "http://localhost:4000/posts?_expand=user&_embed=comments&_embed=likes"
+        );
+        const data = await response.json();
+        console.log(data);
+        setPosts(data);
+      } catch (error) {
+        // @todo handle things here
+      }
+    }
+
+    fetchPosts();
+  }, []);
+
   const [user, setUser] = useState(null);
   const login = (userName) => setUser(findOrCreateUser(userName));
   const logout = () => setUser(null);
